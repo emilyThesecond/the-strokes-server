@@ -6,7 +6,9 @@ const postSchema = new Schema({
     entry: {
         type: String,
     }
-  });
+  }, {
+    timestamps: true
+  })
 const boardSchema = new Schema({
     title: {
         type: String,
