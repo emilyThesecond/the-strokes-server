@@ -9,12 +9,13 @@ const postSchema = new Schema({
   }, {
     timestamps: true
   })
+  
 const boardSchema = new Schema({
     title: {
         type: String,
         required: true
     },
-    post: [postSchema]
+    posts: [postSchema]
 }, {
     timestamps: true
 })

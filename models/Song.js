@@ -6,10 +6,10 @@ const songSchema = new Schema({
     title: String,
     duration: String,
     album: {
-        type: Schema.Types.ObjectId,
-        ref: 'Album'
+        type: String
     },
-    songUrl: String
+    songUrl: String,
+
 })
 
 module.exports = mongoose.model("Song", songSchema)
