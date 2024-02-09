@@ -24,8 +24,7 @@ const show = async(req,res,next)	=> {
 		res.json(await Show.findById(req.params.id))
 
 	} catch (error) {
-		res.status(400).json(error)
-    }
+		res.status(400).json(error)}
 }
 
 module.exports = {
