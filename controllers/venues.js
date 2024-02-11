@@ -1,5 +1,6 @@
 const express = require('express')
-const { Venue, Show }	= require('../models')
+const Venue	= require('../models/Venue')
+const  Show = require('../models/Show')
 
 const create = async(req,res,next)	=> {
 	try{

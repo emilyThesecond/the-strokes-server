@@ -9,6 +9,7 @@ const morgan = require('morgan')
 
 const app = express()
 
+const authRouter = require('./routes/auth')
 const boardsRouter = require('./routes/boards')
 const postsRouter = require('./routes/posts')
 const setsRouter = require('./routes/sets')
@@ -30,6 +31,7 @@ app.use('/', setsRouter)
 app.use('/shows', showsRouter)
 app.use('/', venuesRouter)
 app.use('/songs', songsRouter)
+app.use('/auth', authRouter)
 
 
 app.get("/", (req, res) => {

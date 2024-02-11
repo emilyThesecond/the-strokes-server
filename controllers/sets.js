@@ -1,5 +1,5 @@
 const express = require('express')
-const { Shows }	= require('../models')
+const Shows	= require('../models/Show')
 
 
 const create = async(req,res,next)	=> {

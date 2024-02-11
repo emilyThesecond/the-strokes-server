@@ -1,5 +1,5 @@
 const express = require('express')
-const { Board }	= require('../models')
+const  Board 	= require('../models/Board')
 
 const index = async(req,res,next)	=> {
 	try{
