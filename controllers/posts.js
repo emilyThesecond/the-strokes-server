@@ -1,6 +1,7 @@
 const express = require('express')
 const  Board  = require('../models/Board')
 
+
 const deletePost = async (req,res,next) => {
     try {
         const board = await Board.findById(req.params.boardId)
@@ -19,21 +20,17 @@ const deletePost = async (req,res,next) => {
     }
 }
 
-const create = async (req, res, next) => {
+
+async function create(req, res) {
+    const board = await Board.findById(req.params.id)
+    board.posts.push(req.body);
     try {
-        const board = await Board.findById(req.params.id);
-       
-        if (!board) {
-            return res.status(404).json({ message: "Board not found" });
-        } 
-        // Assuming your req.body contains the necessary data for creating a post
-        board.posts.push(req.body);
-        await board.save();
-        res.status(201).json(board);
-    } catch (error) {
-        res.status(400).json(error);
+      await board.save();
+    } catch (err) {
+      console.log(err);
     }
-}
+    res.redirect(`/boards/${board._id}`);
+  }
 module.exports = {
     create,
     delete: deletePost
