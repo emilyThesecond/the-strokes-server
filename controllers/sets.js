@@ -13,6 +13,11 @@ const create = async(req,res,next)	=> {
 	res.redirect(`/shows/${show._id}`)
   }
 
+  const remove = () => {
+
+  }
+
 module.exports = {
 	create,
+	
 }
