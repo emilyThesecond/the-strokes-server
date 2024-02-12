@@ -31,6 +31,7 @@ async function create(req, res) {
     }
     res.redirect(`/boards/${board._id}`);
   }
+  
 module.exports = {
     create,
     delete: deletePost

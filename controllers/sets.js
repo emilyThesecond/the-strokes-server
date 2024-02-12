@@ -13,11 +13,22 @@ const create = async(req,res,next)	=> {
 	res.redirect(`/shows/${show._id}`)
   }
 
-  const remove = () => {
-
-  }
+  const remove = async (req, res, next) => {
+	const { id, itemId } = req.params; // Assuming itemId is passed as a route parameter
+	try {
+	  const show = await Show.findById(id);
+	  show.set.pull(itemId); // Remove the item from the set array
+	  await show.save();
+	  res.redirect(`/shows/${show._id}`);
+	} catch (err) {
+	  console.error(err);
+	  next(err); // Pass the error to the error handling middleware
+	}
+  };
+  
 
 module.exports = {
 	create,
+	delete: remove
 	
 }
