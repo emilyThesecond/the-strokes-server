@@ -42,23 +42,23 @@ async function create(req, res) {
 
   const update = async (req, res) => {
     const { boardId, postId } = req.params;
-    const { newEntry } = req.body;
+    const { entry } = req.body;
 
     try {
         const board = await Board.findById(boardId);
         if (!board) {
             return res.status(404).json({ message: "Board not found." });
         }
-
+        console.log(board)
         // Find the post to be updated
         const post = board.posts.id(postId);
-
+        console.log(post)
         if (!post) {
             return res.status(404).json({ message: "Post not found." });
         }
 
         // Update the post
-        post.entry = newEntry;
+        post.entry = entry;
 
         await board.save();
         res.status(200).json({ message: "Post updated successfully." });
