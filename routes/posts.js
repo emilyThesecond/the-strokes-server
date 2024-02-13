@@ -6,15 +6,19 @@ const postsCtrl = require('../controllers/posts')
 
 
 
-// POSTS CREATE ROUTE
 router.post("/boards/:id/posts", 
 middleware.stripToken, 
 middleware.verifyToken,
 postsCtrl.create)
 
-router.delete("/posts/:id", 
+router.delete("/boards/:boardId/posts/:postId", 
 middleware.stripToken, 
 middleware.verifyToken,
 postsCtrl.delete)
 
+router.put("/boards/:boardId/posts/:postId",
+middleware.stripToken, 
+middleware.verifyToken,
+postsCtrl.update
+)
 module.exports = router
